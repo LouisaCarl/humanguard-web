@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Team | HUMANGUARD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#00e676', 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style> 
+        body { font-family: 'Inter', sans-serif; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp { opacity: 0; animation: fadeInUp 1s ease-out forwards; }
+        
+        /* Utilitas Delay untuk Cascade Animation */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        /* -----------------------------------------
+           KODE ANIMASI SCROLL MASUK & KELUAR 
+           ----------------------------------------- */
+        .pop-up {
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .is-visible.pop-up {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Hover efek premium untuk foto tim */
+        .team-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -15px rgba(0, 230, 118, 0.2);
+            border-color: #00e676;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <a href="index.html">
+                        <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-12 md:h-16 lg:h-20 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex flex-1 justify-center">
+                    <div class="flex items-baseline space-x-5">
+                        <a href="problem-solution.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Problem & Solution</a>
+                        <a href="technology.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Technology</a>
+                        <a href="how-it-works.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">How it Works</a>
+                        <a href="value-creation.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Value Creation</a>
+                        <a href="team.html" class="text-brand-accent transition px-3 py-2 text-sm font-bold whitespace-nowrap">Team</a>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex flex-shrink-0">
+                    <a href="index.html#demo" class="bg-brand-accent hover:bg-green-400 text-slate-900 font-extrabold px-6 py-2.5 rounded-lg transition shadow-[0_0_20px_rgba(0,230,118,0.6)] ring-2 ring-offset-2 ring-offset-brand-dark ring-green-400 border border-green-200">
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 animate-fadeInUp">
+            <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">The Minds Behind The Intelligence</span>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Kenali Tim <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">HUMANGUARD</span></h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">Kami adalah tim multidisiplin yang berkomitmen untuk merevolusi standar keselamatan kerja industri hulu migas melalui kekuatan kecerdasan buatan.</p>
+        </div>
+
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+            
+            <div class="flex flex-wrap justify-center gap-8 lg:gap-10">
+                
+                <div class="group team-card bg-brand-card w-full sm:w-[calc(50%-2rem)] md:w-[calc(33.333%-2.5rem)] max-w-[320px] rounded-3xl border border-gray-800 overflow-hidden scroll-anim pop-up" style="transition-delay: 100ms;">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-brand-dark">
+                        <img src="william.png" alt="William Albert Halim" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center relative z-10 -mt-6">
+                        <h3 class="text-xl font-bold text-white mb-1">William Albert Halim</h3>
+                        <p class="text-brand-accent text-sm font-semibold tracking-wide uppercase">Ketua Tim</p>
+                    </div>
+                </div>
+
+                <div class="group team-card bg-brand-card w-full sm:w-[calc(50%-2rem)] md:w-[calc(33.333%-2.5rem)] max-w-[320px] rounded-3xl border border-gray-800 overflow-hidden scroll-anim pop-up" style="transition-delay: 200ms;">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-brand-dark">
+                        <img src="iel.png" alt="Vincentius Adriel Santoso" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center relative z-10 -mt-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Vincentius Adriel S.</h3>
+                        <p class="text-gray-400 text-sm font-medium tracking-wide uppercase">Anggota Tim</p>
+                    </div>
+                </div>
+
+                <div class="group team-card bg-brand-card w-full sm:w-[calc(50%-2rem)] md:w-[calc(33.333%-2.5rem)] max-w-[320px] rounded-3xl border border-gray-800 overflow-hidden scroll-anim pop-up" style="transition-delay: 300ms;">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-brand-dark">
+                        <img src="vio.png" alt="Alvionita Hardianti" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center relative z-10 -mt-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Alvionita Hardianti</h3>
+                        <p class="text-gray-400 text-sm font-medium tracking-wide uppercase">Anggota Tim</p>
+                    </div>
+                </div>
+
+                <div class="group team-card bg-brand-card w-full sm:w-[calc(50%-2rem)] md:w-[calc(33.333%-2.5rem)] max-w-[320px] rounded-3xl border border-gray-800 overflow-hidden scroll-anim pop-up" style="transition-delay: 400ms;">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-brand-dark">
+                        <img src="felicia.png" alt="Felicia Ivana Wicaksono" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center relative z-10 -mt-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Felicia Ivana W.</h3>
+                        <p class="text-gray-400 text-sm font-medium tracking-wide uppercase">Anggota Tim</p>
+                    </div>
+                </div>
+
+                <div class="group team-card bg-brand-card w-full sm:w-[calc(50%-2rem)] md:w-[calc(33.333%-2.5rem)] max-w-[320px] rounded-3xl border border-gray-800 overflow-hidden scroll-anim pop-up" style="transition-delay: 500ms;">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-brand-dark">
+                        <img src="felix.png" alt="Felix Pasila" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 text-center relative z-10 -mt-6 border-t-2 border-transparent group-hover:border-brand-accent transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-1">Felix Pasila</h3>
+                        <p class="text-blue-400 text-sm font-semibold tracking-wide uppercase">Advisor Tim</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-800 bg-[#070b14] pt-16 pb-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-3">
+                        <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-10 grayscale opacity-70">
+                        <span class="text-gray-400 font-bold tracking-widest text-xl">HUMAN<span class="text-gray-600">GUARD</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm max-w-sm leading-relaxed">
+                        Digital Hackathon AI/ML Hulu Migas 2026. <br>
+                        AI-Powered Human Reliability Intelligence.
+                    </p>
+                    <div class="text-gray-600 text-sm mt-4">
+                        &copy; 2026 HUMANGUARD Team. All rights reserved.
+                    </div>
+                </div>
+                <div class="flex flex-col md:items-end gap-4 text-gray-400">
+                    <h4 class="text-white font-semibold tracking-wide mb-2">Hubungi Kami</h4>
+                    <a href="https://wa.me/6282302082939" target="_blank" class="flex items-center gap-3 hover:text-brand-accent transition-colors duration-300">
+                        <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.397 0 .015 5.38.015 12.016c0 2.115.548 4.184 1.59 6.004L0 24l6.126-1.606c1.766.974 3.754 1.488 5.897 1.488 6.634 0 12.016-5.38 12.016-12.015C24.04 5.38 18.666 0 12.031 0zm.006 21.848c-1.802 0-3.568-.485-5.116-1.404l-.367-.217-3.805.997.997-3.805-.217-.367c-.919-1.548-1.404-3.314-1.404-5.116 0-5.465 4.452-9.917 9.917-9.917s9.917 4.452 9.917 9.917-4.452 9.917-9.917 9.917zm5.446-7.443c-.298-.15-1.766-.872-2.039-.972-.274-.1-.473-.15-.672.15-.199.299-.771.972-.946 1.171-.174.199-.348.224-.647.075-2.046-1.026-3.414-2.226-4.459-4.04-.15-.262.137-.25.422-.812.075-.15.037-.274-.037-.424-.075-.15-.672-1.62-.921-2.218-.243-.585-.487-.506-.672-.515-.174-.009-.373-.009-.572-.009-.199 0-.523.075-.797.374-.274.299-1.046 1.021-1.046 2.49 0 1.469 1.071 2.888 1.22 3.088.15.2 2.106 3.214 5.103 4.509 1.769.764 2.434.815 3.324.686.993-.143 1.766-.721 2.015-1.42.249-.698.249-1.296.174-1.42-.075-.124-.274-.199-.573-.349z"/></svg>
+                        +62 823-0208-2939
+                    </a>
+                    <a href="mailto:c11240022@john.petra.ac.id" class="flex items-center gap-3 hover:text-brand-accent transition-colors duration-300">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        c11240022@john.petra.ac.id
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Reset animasi jika keluar dari viewport
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, { 
+                threshold: 0.15 
+            });
+
+            const animElements = document.querySelectorAll('.scroll-anim');
+            animElements.forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
