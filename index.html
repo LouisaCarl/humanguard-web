@@ -25,6 +25,7 @@
     <style> 
         body { font-family: 'Inter', sans-serif; }
 
+        /* Animasi Mengambang HP */
         @keyframes floatMobile {
             0% { transform: translateY(0); }
             50% { transform: translateY(-15px); } 
@@ -32,25 +33,55 @@
         }
         .animate-floatMobile { animation: floatMobile 5s ease-in-out infinite; }
 
+        /* Animasi Muncul Pertama Kali (Hero) */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fadeInUp {
-            opacity: 0; 
-            animation: fadeInUp 1s ease-out forwards;
-        }
+        .animate-fadeInUp { opacity: 0; animation: fadeInUp 1s ease-out forwards; }
         .delay-200 { animation-delay: 200ms; }
         .delay-400 { animation-delay: 400ms; }
 
+        /* Cahaya Latar */
         @keyframes glowPulse {
             0%, 100% { opacity: 0.15; transform: scale(1); }
             50% { opacity: 0.3; transform: scale(1.1); }
         }
         .animate-glowPulse { animation: glowPulse 8s ease-in-out infinite; }
+
+        /* -----------------------------------------
+           KODE ANIMASI SCROLL MASUK & KELUAR 
+           ----------------------------------------- */
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .slide-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .pop-up {
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .is-visible.slide-left,
+        .is-visible.slide-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .is-visible.pop-up {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     </style>
 </head>
-<body class="bg-brand-dark text-white antialiased flex flex-col min-h-screen">
+<body class="bg-brand-dark text-white antialiased flex flex-col min-h-screen overflow-x-hidden">
 
     <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,11 +95,11 @@
                 
                 <div class="hidden md:flex flex-1 justify-center">
                     <div class="flex items-baseline space-x-5">
-                        <a href="problem-solution.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Problem & Solution</a>
-                        <a href="technology.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Technology</a>
-                        <a href="how-it-works.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">How it Works</a>
-                        <a href="value-creation.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Value Creation</a>
-                        <a href="team.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Team</a>
+                        <a href="problem-solution.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Problem & Solution</a>
+                        <a href="technology.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Technology</a>
+                        <a href="how-it-works.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">How it Works</a>
+                        <a href="value-creation.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Value Creation</a>
+                        <a href="team.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Team</a>
                     </div>
                 </div>
                 
@@ -83,7 +114,8 @@
     </nav>
 
     <main class="flex-grow">
-        <section id="demo" class="relative pt-32 pb-20 lg:pt-48 overflow-hidden bg-gradient-to-b from-slate-900 to-brand-dark">
+        
+        <section id="hero" class="relative pt-32 pb-20 lg:pt-48 overflow-hidden bg-gradient-to-b from-slate-900 to-brand-dark">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
                 
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-card border border-gray-700 text-sm font-medium text-gray-300 mb-8 animate-fadeInUp">
@@ -100,14 +132,24 @@
                     Mengubah paradigma K3 dari reaktif menjadi prediktif. Mencegah insiden sebelum terjadi dengan memantau kondisi kognitif dan fisik pekerja secara real-time.
                 </p>
                 
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-5 mb-16 animate-fadeInUp delay-400">
+                    <a href="live-demo.html" class="bg-brand-accent hover:bg-green-400 text-slate-900 font-extrabold px-8 py-4 rounded-xl transition text-lg shadow-[0_0_30px_rgba(0,230,118,0.5)] hover:scale-105 ring-2 ring-offset-2 ring-offset-brand-dark ring-green-400 flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Coba Simulasi Live
+                    </a>
+                    <a href="#mengapa" class="bg-brand-card hover:bg-gray-800 border border-gray-600 text-white font-bold px-8 py-4 rounded-xl transition text-lg hover:scale-105">
+                        Pelajari Sistem
+                    </a>
+                </div>
+                
                 <div class="relative max-w-6xl mx-auto mt-16 mb-16 px-4 group">
                     <div class="absolute inset-0 bg-green-900/20 rounded-full blur-[120px] transform animate-glowPulse z-0"></div>
                     <div class="relative z-10 flex flex-col md:flex-row justify-center items-center md:items-end gap-10 lg:gap-16">
-                        <div class="relative w-full max-w-[750px] transition-transform duration-500 hover:scale-[1.02]">
-                            <img src="laptop.png" alt="HUMANGUARD Laptop Dashboard" class="w-full h-auto object-cover rounded-xl md:rounded-3xl shadow-2xl">
+                        <div class="relative w-full max-w-[750px] transition-transform duration-500 hover:scale-[1.02] scroll-anim slide-left">
+                            <img src="laptop.jpg" alt="HUMANGUARD Laptop Dashboard" class="w-full h-auto object-cover rounded-xl md:rounded-3xl shadow-2xl">
                         </div>
-                        <div class="relative w-[220px] lg:w-[250px] flex-shrink-0 transition-transform duration-300 hover:scale-105 animate-floatMobile">
-                            <img src="hp.png" alt="HUMANGUARD Mobile Dashboard" class="w-full h-auto object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                        <div class="relative w-[220px] lg:w-[250px] flex-shrink-0 transition-transform duration-300 hover:scale-105 animate-floatMobile scroll-anim slide-right">
+                            <img src="hp.jpg" alt="HUMANGUARD Mobile Dashboard" class="w-full h-auto object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
                         </div>
                     </div>
                 </div>
@@ -115,14 +157,14 @@
             </div>
         </section>
 
-        <section class="py-24 border-t border-gray-800 bg-brand-dark">
+        <section id="mengapa" class="py-24 border-t border-gray-800 bg-brand-dark">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-center text-3xl md:text-5xl font-bold text-white mb-20 tracking-tight">
+                <h2 class="text-center text-3xl md:text-5xl font-bold text-white mb-20 tracking-tight scroll-anim pop-up">
                     Mengapa Hulu Migas Membutuhkan Ini?
                 </h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 text-center">
-                    <div class="group">
+                    <div class="group scroll-anim slide-left">
                         <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
                             <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                         </div>
@@ -132,17 +174,17 @@
                         </p>
                     </div>
 
-                    <div class="group">
+                    <div class="group scroll-anim pop-up">
                         <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
                             <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h3 class="text-3xl font-bold text-brand-accent mb-4">Kerugian $3.000.000</h3>
+                        <h3 class="text-3xl font-bold text-brand-accent mb-4">Kerugian Rp 46,5 Miliar</h3>
                         <p class="text-gray-400 leading-relaxed text-lg">
                             Satu insiden fatal memakan biaya rata-rata $3 Juta USD yang meliputi kompensasi medis, hukum, biaya investigasi, hingga perbaikan kerusakan.
                         </p>
                     </div>
 
-                    <div class="group">
+                    <div class="group scroll-anim slide-right">
                         <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
                             <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                         </div>
@@ -155,22 +197,17 @@
             </div>
         </section>
 
-        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 py-16 text-center border-y border-gray-800 scroll-anim pop-up">
-            <h2 class="text-3xl md:text-4xl font-light text-gray-300 italic mb-8">
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 py-24 text-center border-y border-gray-800 scroll-anim pop-up">
+            <h2 class="text-3xl md:text-4xl font-light text-gray-300 italic mb-10">
                 "Safety is not an overhead. It is the <strong class="text-white font-bold">ultimate protection</strong> for your human and financial capital."
             </h2>
-            <a href="team.html" class="inline-block bg-white text-slate-900 font-bold px-8 py-3 rounded-full transition hover:bg-gray-200 hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            <a href="team.html" class="inline-flex items-center gap-2 bg-white text-slate-900 font-bold px-8 py-3.5 rounded-full transition hover:bg-gray-200 hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                 Kenali Tim Pengembang Kami
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </a>
         </section>
 
-    </main>
-
-    </div>
-            </div>
-        </section>
-
-        <section class="py-16 bg-brand-dark border-t border-gray-800/50">
+        <section class="py-16 bg-brand-dark border-t border-gray-800/50 scroll-anim pop-up">
             <div class="max-w-4xl mx-auto px-4 text-center">
                 <h3 class="text-gray-400 text-lg font-medium mb-10 tracking-wide">Asal Universitas</h3>
                 <div class="flex justify-center items-center gap-12 md:gap-24">
@@ -206,12 +243,10 @@
 
                 <div class="flex flex-col md:items-end gap-4 text-gray-400">
                     <h4 class="text-white font-semibold tracking-wide mb-2">Hubungi Kami</h4>
-                    
                     <a href="https://wa.me/6282302082939" target="_blank" class="flex items-center gap-3 hover:text-brand-accent transition-colors duration-300">
                         <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.397 0 .015 5.38.015 12.016c0 2.115.548 4.184 1.59 6.004L0 24l6.126-1.606c1.766.974 3.754 1.488 5.897 1.488 6.634 0 12.016-5.38 12.016-12.015C24.04 5.38 18.666 0 12.031 0zm.006 21.848c-1.802 0-3.568-.485-5.116-1.404l-.367-.217-3.805.997.997-3.805-.217-.367c-.919-1.548-1.404-3.314-1.404-5.116 0-5.465 4.452-9.917 9.917-9.917s9.917 4.452 9.917 9.917-4.452 9.917-9.917 9.917zm5.446-7.443c-.298-.15-1.766-.872-2.039-.972-.274-.1-.473-.15-.672.15-.199.299-.771.972-.946 1.171-.174.199-.348.224-.647.075-2.046-1.026-3.414-2.226-4.459-4.04-.15-.262.137-.25.422-.812.075-.15.037-.274-.037-.424-.075-.15-.672-1.62-.921-2.218-.243-.585-.487-.506-.672-.515-.174-.009-.373-.009-.572-.009-.199 0-.523.075-.797.374-.274.299-1.046 1.021-1.046 2.49 0 1.469 1.071 2.888 1.22 3.088.15.2 2.106 3.214 5.103 4.509 1.769.764 2.434.815 3.324.686.993-.143 1.766-.721 2.015-1.42.249-.698.249-1.296.174-1.42-.075-.124-.274-.199-.573-.349z"/></svg>
                         +62 823-0208-2939
                     </a>
-                    
                     <a href="mailto:c11240022@john.petra.ac.id" class="flex items-center gap-3 hover:text-brand-accent transition-colors duration-300">
                         <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         c11240022@john.petra.ac.id
@@ -221,6 +256,28 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Reset animasi jika elemen keluar dari layar
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, { 
+                threshold: 0.15 
+            });
+
+            const animElements = document.querySelectorAll('.scroll-anim');
+            animElements.forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
 
 </body>
 </html>
