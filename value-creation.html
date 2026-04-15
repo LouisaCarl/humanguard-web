@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Value Creation & ROI | HUMANGUARD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#00e676', 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style> 
+        body { font-family: 'Inter', sans-serif; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp { opacity: 0; animation: fadeInUp 1s ease-out forwards; }
+        .delay-200 { animation-delay: 200ms; }
+
+        /* Progress Bar Animation */
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+
+        /* -----------------------------------------
+           KODE ANIMASI SCROLL MASUK & KELUAR 
+           ----------------------------------------- */
+        
+        /* State Awal: Sembunyi ke Kiri */
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* State Awal: Sembunyi ke Kanan */
+        .slide-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* State Awal: Sembunyi (Pop up dari bawah tengah) */
+        .pop-up {
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* State Saat Terlihat di Layar */
+        .is-visible.slide-left,
+        .is-visible.slide-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .is-visible.pop-up {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        /* Memicu animasi bar saat container terlihat */
+        .is-visible .animate-fill {
+            animation: fillBar 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <a href="index.html">
+                        <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-12 md:h-16 lg:h-20 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex flex-1 justify-center">
+                    <div class="flex items-baseline space-x-5">
+                        <a href="problem-solution.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Problem & Solution</a>
+                        <a href="technology.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Technology</a>
+                        <a href="how-it-works.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">How it Works</a>
+                        <a href="value-creation.html" class="text-brand-accent transition px-3 py-2 text-sm font-bold whitespace-nowrap">Value Creation</a>
+                        <a href="team.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Team</a>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex flex-shrink-0">
+                    <a href="index.html#demo" class="bg-brand-accent hover:bg-green-400 text-slate-900 font-extrabold px-6 py-2.5 rounded-lg transition shadow-[0_0_20px_rgba(0,230,118,0.6)] ring-2 ring-offset-2 ring-offset-brand-dark ring-green-400 border border-green-200">
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 animate-fadeInUp">
+            <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">Impact & Return on Investment</span>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Mengubah Keselamatan Menjadi <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Pelindung Profitabilitas</span></h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">Sistem K3 modern tidak lagi hanya dilihat sebagai pusat biaya (cost center). HUMANGUARD adalah investasi strategis untuk menjaga kontinuitas operasi hulu migas.</p>
+        </div>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+            <div class="text-center mb-16 scroll-anim pop-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Operational Excellence Value</h2>
+                <p class="text-gray-400">Dampak langsung pencegahan insiden terhadap produktivitas dan kelancaran lapangan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-card p-8 rounded-3xl border border-gray-800 hover:border-brand-accent/50 transition-colors duration-300 scroll-anim slide-left">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Penyelamatan Laju Produksi</h3>
+                    <p class="text-gray-400 leading-relaxed mb-4">Setiap penghentian darurat <i>(Emergency Shutdown)</i> akibat insiden fatal dapat memutus laju aliran produksi berharga perusahaan.</p>
+                    <div class="bg-brand-dark p-4 rounded-xl border border-gray-800">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="text-green-400 font-bold">~15.000 BBLS</span>
+                            <span class="text-xs text-gray-500 uppercase">Minyak Terselamatkan</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-green-400 font-bold">~70 MMSCF</span>
+                            <span class="text-xs text-gray-500 uppercase">Gas Bumi Terselamatkan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card p-8 rounded-3xl border border-gray-800 hover:border-brand-accent/50 transition-colors duration-300 scroll-anim pop-up">
+                    <div class="w-16 h-16 bg-brand-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Zero Unplanned Downtime</h3>
+                    <p class="text-gray-400 leading-relaxed">Insiden di area fasilitas produksi membutuhkan waktu hari hingga minggu untuk investigasi garis polisi dan perbaikan aset. HUMANGUARD memastikan operasi 24/7 tetap berjalan dengan intervensi senyap sebelum <i>downtime</i> itu terjadi.</p>
+                </div>
+
+                <div class="bg-brand-card p-8 rounded-3xl border border-gray-800 hover:border-brand-accent/50 transition-colors duration-300 scroll-anim slide-right">
+                    <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Optimal Resource Allocation</h3>
+                    <p class="text-gray-400 leading-relaxed">Sistem rotasi bukan lagi berdasarkan tebakan atau durasi semata. Supervisor dapat mengalokasikan pekerja ke tugas <i>High-Risk</i> berdasarkan skor <i>Human Reliability Index</i> tertinggi secara presisi.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 border-t border-gray-800/50 pt-24 overflow-hidden">
+            <div class="text-center mb-16 scroll-anim pop-up">
+                <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block">The Cost of Inaction</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Financial Potential Value</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Satu kegagalan fatal tidak hanya merenggut nyawa, tetapi juga membakar nilai finansial perusahaan yang masif. HUMANGUARD adalah asuransi prediktif Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <div class="scroll-anim slide-left text-center lg:text-left">
+                    <div class="inline-flex items-center justify-center p-3 bg-red-500/10 rounded-2xl mb-6">
+                        <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl text-gray-400 mb-2">Potensi Penghematan Finansial per Insiden Fatal</h3>
+                    <div class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 mb-6 font-mono tracking-tight">
+                        Rp 50 Miliar
+                    </div>
+                    <p class="text-lg text-gray-400 leading-relaxed mb-8">
+                        Itulah nilai estimasi kerugian minimum yang dapat dihindari oleh perusahaan <strong>hanya dari mencegah satu (1) insiden operasi major</strong> akibat <i>fatigue</i> pekerja.
+                    </p>
+                    
+                    <a href="#breakdown" class="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-green-400 transition">
+                        Lihat Distribusi Cost Avoidance
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </a>
+                </div>
+
+                <div id="breakdown" class="bg-brand-card p-8 rounded-3xl border border-gray-800 shadow-2xl scroll-anim slide-right">
+                    <h4 class="text-xl font-bold text-white mb-8 border-b border-gray-700 pb-4">Estimasi Rincian Kerugian <i>(Cost Avoidance)</i></h4>
+                    
+                    <div class="space-y-6">
+                        <div class="relative">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-300 font-semibold">Kehilangan Produksi (Loss of Opportunity)</span>
+                                <span class="text-white font-bold">~ 40%</span>
+                            </div>
+                            <div class="w-full h-3 bg-brand-dark rounded-full overflow-hidden">
+                                <div class="h-full bg-red-500 rounded-full animate-fill" style="width: 40%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-300 font-semibold">Kerusakan & Perbaikan Aset/Fasilitas</span>
+                                <span class="text-white font-bold">~ 30%</span>
+                            </div>
+                            <div class="w-full h-3 bg-brand-dark rounded-full overflow-hidden">
+                                <div class="h-full bg-orange-500 rounded-full animate-fill" style="width: 30%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-300 font-semibold">Kompensasi Medis, Asuransi & Hukum</span>
+                                <span class="text-white font-bold">~ 20%</span>
+                            </div>
+                            <div class="w-full h-3 bg-brand-dark rounded-full overflow-hidden">
+                                <div class="h-full bg-yellow-400 rounded-full animate-fill" style="width: 20%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-300 font-semibold">Denda Regulasi & Biaya Investigasi Panjang</span>
+                                <span class="text-white font-bold">~ 10%</span>
+                            </div>
+                            <div class="w-full h-3 bg-brand-dark rounded-full overflow-hidden">
+                                <div class="h-full bg-brand-accent rounded-full animate-fill" style="width: 10%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 py-16 text-center border-y border-gray-800 scroll-anim pop-up">
+            <h2 class="text-3xl md:text-4xl font-light text-gray-300 italic mb-8">
+                "Safety is not an overhead. It is the <strong class="text-white font-bold">ultimate protection</strong> for your human and financial capital."
+            </h2>
+            <a href="team.html" class="inline-block bg-white text-slate-900 font-bold px-8 py-3 rounded-full transition hover:bg-gray-200 hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                Kenali Tim Pengembang Kami
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-800 bg-[#070b14] pt-16 pb-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center gap-3">
+                        <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-10 grayscale opacity-70">
+                        <span class="text-gray-400 font-bold tracking-widest text-xl">HUMAN<span class="text-gray-600">GUARD</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm max-w-sm leading-relaxed">
+                        Digital Hackathon AI/ML Hulu Migas 2026. <br>
+                        AI-Powered Human Reliability Intelligence.
+                    </p>
+                    <div class="text-gray-600 text-sm mt-4">
+                        &copy; 2026 HUMANGUARD Team. All rights reserved.
+                    </div>
+                </div>
+                <div class="flex flex-col md:items-end gap-4 text-gray-400">
+                    <h4 class="text-white font-semibold tracking-wide mb-2">Hubungi Kami</h4>
+                    <a href="https://wa.me/6282302082939" target="_blank" class="flex items-center gap-3 hover:text-brand-accent transition-colors duration-300">
+                        <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.397 0 .015 5.38.015 12.016c0 2.115.548 4.184 1.59 6.004L0 24l6.126-1.606c1.766.974 3.754 1.488 5.897 1.488 6.634 0 12.016-5.38 12.016-12.015C24.04 5.38 18.666 0 12.031 0zm.006 21.848c-1.802 0-3.568-.485-5.116-1.404l-.367-.217-3.805.997.997-3.805-.217-.367c-.919-1.548-1.404-3.314-1.404-5.116 0-5.465 4.452-9.917 9.917-9.917s9.917 4.452 9.917 9.917-4.452 9.917-9.917 9.917zm5.446-7.443c-.298-.15-1.766-.872-2.039-.972-.274-.1-.473-.15-.672.15-.199.299-.771.972-.946 1.171-.174.199-.348.224-.647.075-2.046-1.026-3.414-2.226-4.459-4.04-.15-.262.137-.25.422-.812.075-.15.037-.274-.037-.424-.075-.15-.672-1.62-.921-2.218-.243-.585-.487-.506-.672-.515-.174-.009-.373-.009-.572-.009-.199 0-.523.075-.797.374-.274.299-1.046 1.021-1.046 2.49 0 1.469 1.071 2.888 1.22 3.088.15.2 2.106 3.214 5.103 4.509 1.769.764 2.434.815 3.324.686.993-.143 1.766-.721 2.015-1.42.249-.698.249-1.296.174-1.42-.075-.124-.274-.199-.573-.349z"/></svg>
+                        +62 823-0208-2939
+                    </a>
+                    <a href="mailto:c11240022@john.petra.ac.id" class="flex items-center gap-3 hover:text-brand-accent transition-colors duration-300">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        c11240022@john.petra.ac.id
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Fitur agar animasi diulang saat pengguna scroll bolak-balik
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, { 
+                threshold: 0.2 // Terpicu saat 20% area elemen masuk ke layar
+            });
+
+            const animElements = document.querySelectorAll('.scroll-anim');
+            animElements.forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
