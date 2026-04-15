@@ -13,46 +13,41 @@
                         brand: {
                             dark: '#0f172a',
                             card: '#1e293b',
-                            accent: '#00e676', /* Hijau Terang HUMANGUARD */
+                            accent: '#00e676', 
                         }
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style> 
         body { font-family: 'Inter', sans-serif; }
 
-        /* 1. ANIMASI HP NAIK TURUN (Floating Animation) */
         @keyframes floatMobile {
             0% { transform: translateY(0); }
-            50% { transform: translateY(-18px); } /* Jarak angkat ke atas */
+            50% { transform: translateY(-15px); } 
             100% { transform: translateY(0); }
         }
         .animate-floatMobile {
-            /* Durasi 5 detik agar lambat dan profesional (ease-in-out untuk kehalusan) */
             animation: floatMobile 5s ease-in-out infinite;
         }
 
-        /* 2. ANIMASI ENTRANCE (Fade In Up) */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fadeInUp {
-            opacity: 0; /* Tersembunyi di awal */
+            opacity: 0; 
             animation: fadeInUp 1s ease-out forwards;
         }
-        /* Penundaan (delay) agar teks muncul bergantian */
         .delay-200 { animation-delay: 200ms; }
         .delay-400 { animation-delay: 400ms; }
 
-        /* 3. SUBTLE PULSE GLOW (Cahaya Latar Belakang) */
         @keyframes glowPulse {
             0%, 100% { opacity: 0.15; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.1); }
+            50% { opacity: 0.3; transform: scale(1.1); }
         }
         .animate-glowPulse {
             animation: glowPulse 8s ease-in-out infinite;
@@ -63,26 +58,30 @@
 
     <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="#" class="flex-shrink-0 flex items-center cursor-pointer">
-                    <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-10 w-auto">
-                    <span class="font-bold text-2xl tracking-wider hidden sm:block ml-3">HUMAN<span class="text-brand-accent">GUARD</span></span>
-                </a>
+            <div class="flex items-center justify-between h-24">
                 
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#problem" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium">Problem</a>
-                        <a href="#solution" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium">Solution</a>
-                        <a href="#process" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium">Process</a>
-                        <a href="#impact" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium">Impact</a>
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <a href="#">
+                        <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-12 md:h-16 lg:h-20 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex flex-1 justify-center">
+                    <div class="flex items-baseline space-x-5">
+                        <a href="#problem-solution" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Problem & Solution</a>
+                        <a href="#technology" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Technology</a>
+                        <a href="#how-it-works" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">How it Works</a>
+                        <a href="#value-creation" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Value Creation</a>
+                        <a href="#team" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Team</a>
                     </div>
                 </div>
                 
-                <div class="hidden md:block">
-                    <a href="#demo" class="bg-brand-accent hover:bg-green-400 text-slate-900 font-bold px-5 py-2.5 rounded-lg transition shadow-[0_0_15px_rgba(0,230,118,0.4)]">
+                <div class="hidden md:flex flex-shrink-0">
+                    <a href="#demo" class="bg-brand-accent hover:bg-green-400 text-slate-900 font-extrabold px-6 py-2.5 rounded-lg transition shadow-[0_0_20px_rgba(0,230,118,0.6)] ring-2 ring-offset-2 ring-offset-brand-dark ring-green-400 border border-green-200">
                         Live Demo
                     </a>
                 </div>
+                
             </div>
         </div>
     </nav>
@@ -110,30 +109,30 @@
                 </a>
             </div>
 
-            <div class="relative max-w-7xl mx-auto hidden md:block mt-12 mb-32 group">
+            <div class="relative max-w-5xl mx-auto hidden md:block mt-12 mb-32 group px-4">
                 
-                <div class="absolute inset-0 bg-green-900/40 rounded-full blur-[100px] transform -translate-y-20 animate-glowPulse"></div>
+                <div class="absolute inset-0 bg-green-900/20 rounded-full blur-[100px] transform -translate-y-10 animate-glowPulse"></div>
                 
                 <div class="relative flex justify-center items-center">
                     
-                    <div class="relative w-[1050px] z-10 transition-transform duration-500 hover:scale-[1.03]">
-                        <img src="laptop.png" alt="HUMANGUARD Laptop Dashboard" class="w-full h-auto object-cover rounded-3xl shadow-2xl border-4 border-gray-900 bg-brand-dark">
+                    <div class="relative w-full max-w-[800px] z-10 transition-transform duration-500 hover:scale-[1.02]">
+                        <img src="laptop.jpg" alt="HUMANGUARD Laptop Dashboard" class="w-full h-auto object-cover rounded-xl md:rounded-3xl shadow-2xl">
                     </div>
 
-                    <div class="absolute -right-20 -bottom-10 w-[290px] z-20 transition-transform duration-300 hover:scale-110 animate-floatMobile">
-                        <img src="hp.png" alt="HUMANGUARD Mobile Dashboard" class="w-full h-auto object-cover rounded-3xl shadow-2xl border-[12px] border-gray-950 bg-brand-dark">
+                    <div class="absolute -right-4 md:-right-8 lg:-right-10 -bottom-12 w-[180px] md:w-[220px] lg:w-[240px] z-20 transition-transform duration-300 hover:scale-110 animate-floatMobile">
+                        <img src="hp.jpg" alt="HUMANGUARD Mobile Dashboard" class="w-full h-auto object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
                     </div>
                 </div>
             </div>
             
-            <div class="block md:hidden max-w-sm mx-auto rounded-xl shadow-xl border border-gray-800 overflow-hidden bg-brand-card">
-                <img src="hp.png" alt="HUMANGUARD Dashboard" class="w-full h-auto object-cover opacity-90 transition">
+            <div class="block md:hidden max-w-xs mx-auto mt-10">
+                <img src="hp.jpg" alt="HUMANGUARD Dashboard" class="w-full h-auto object-cover rounded-[2.5rem] shadow-2xl">
             </div>
 
         </div>
     </section>
 
-    <section id="problem" class="py-20 border-y border-gray-800 bg-black/30 pt-32">
+    <section id="problem-solution" class="py-20 border-y border-gray-800 bg-black/30 pt-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-gray-400 text-sm font-bold tracking-widest uppercase mb-8">Mengapa Industri Hulu Migas Membutuhkan Ini?</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -153,19 +152,24 @@
         </div>
     </section>
 
-    <section id="solution" class="py-32 bg-brand-dark min-h-screen text-center border-b border-gray-800">
-        <h2 class="text-4xl font-bold text-white mb-4">The Solution</h2>
-        <p class="text-gray-400">Bagian ini akan diisi dengan narasi Budi Santoso (Use Case).</p>
+    <section id="technology" class="py-32 bg-brand-dark min-h-screen text-center border-b border-gray-800">
+        <h2 class="text-4xl font-bold text-white mb-4">Technology</h2>
+        <p class="text-gray-400">Bagian ini akan diisi dengan detail teknologi AI/ML Anda.</p>
     </section>
 
-    <section id="process" class="py-32 bg-brand-card min-h-screen text-center border-b border-gray-800">
-        <h2 class="text-4xl font-bold text-white mb-4">How It Works (Process)</h2>
+    <section id="how-it-works" class="py-32 bg-brand-card min-h-screen text-center border-b border-gray-800">
+        <h2 class="text-4xl font-bold text-white mb-4">How It Works</h2>
         <p class="text-gray-400">Bagian ini akan diisi dengan 4 Lapisan Arsitektur (Wearable, Edge, AI, Dashboard).</p>
     </section>
 
-    <section id="impact" class="py-32 bg-brand-dark min-h-[50vh] text-center">
-        <h2 class="text-4xl font-bold text-white mb-4">Impact & ROI</h2>
-        <p class="text-gray-400">Bagian ini akan diisi dengan potensi penghematan (BBLS/MMSCF).</p>
+    <section id="value-creation" class="py-32 bg-brand-dark min-h-[50vh] text-center border-b border-gray-800">
+        <h2 class="text-4xl font-bold text-white mb-4">Value Creation</h2>
+        <p class="text-gray-400">Bagian ini akan diisi dengan potensi penghematan (BBLS/MMSCF) dan ROI.</p>
+    </section>
+    
+    <section id="team" class="py-32 bg-brand-card min-h-[50vh] text-center">
+        <h2 class="text-4xl font-bold text-white mb-4">Meet The Team</h2>
+        <p class="text-gray-400">Bagian ini akan diisi dengan profil tim Anda.</p>
     </section>
 
 </body>
