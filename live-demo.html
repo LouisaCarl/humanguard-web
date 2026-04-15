@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Live Demo | HUMANGUARD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#00e676', 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style> 
+        body { font-family: 'Inter', sans-serif; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+        
+        /* Kustomisasi Slider (Range Input) */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #334155;
+            border-radius: 2px;
+        }
+        
+        /* Efek Modal Alert */
+        .modal-overlay {
+            backdrop-filter: blur(8px);
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <a href="index.html">
+                        <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-12 md:h-16 lg:h-20 w-auto object-contain">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex flex-1 justify-center">
+                    <div class="flex items-baseline space-x-5">
+                        <a href="problem-solution.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Problem & Solution</a>
+                        <a href="technology.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Technology</a>
+                        <a href="how-it-works.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">How it Works</a>
+                        <a href="value-creation.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Value Creation</a>
+                        <a href="team.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap text-gray-300">Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20">
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-fadeInUp">
+            <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">Interactive System Simulator</span>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Simulasi Deteksi <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Real-Time</span></h1>
+            <p class="text-lg text-gray-400 max-w-3xl mx-auto">Ubah parameter sensor di bawah ini untuk melihat bagaimana algoritma AI HUMANGUARD memproses sinyal biologis pekerja menjadi indeks keselamatan yang terukur.</p>
+        </div>
+
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 animate-fadeInUp" style="animation-delay: 200ms;">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                
+                <div class="lg:col-span-7 bg-[#1e2329] p-6 md:p-8 rounded-3xl border border-gray-700 shadow-2xl">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-gray-700 pb-4">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        Data Sensor (Input)
+                    </h3>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <label class="font-bold text-white block">Sinyal Wearable — HRV Drop</label>
+                                    <span class="text-xs text-gray-400">Penurunan Heart Rate Variability vs baseline</span>
+                                </div>
+                                <span id="hrvValue" class="text-lg font-bold text-white">18%</span>
+                            </div>
+                            <input type="range" id="hrvSlider" min="0" max="50" value="18" class="w-full">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <label class="font-bold text-white block">Sinyal Wearable — GSR</label>
+                                    <span class="text-xs text-gray-400">Peningkatan konduktansi kulit (stres kumulatif)</span>
+                                </div>
+                                <span id="gsrValue" class="text-lg font-bold text-white">5%</span>
+                            </div>
+                            <input type="range" id="gsrSlider" min="0" max="50" value="5" class="w-full">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <label class="font-bold text-white block">Sinyal Kamera — PERCLOS</label>
+                                    <span class="text-xs text-gray-400">Persentase kelopak mata tertutup (>25% = fatigue)</span>
+                                </div>
+                                <span id="perclosValue" class="text-lg font-bold text-white">8%</span>
+                            </div>
+                            <input type="range" id="perclosSlider" min="0" max="50" value="8" class="w-full">
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-700/50">
+                            <div class="flex justify-between items-end mb-2">
+                                <div>
+                                    <label class="font-bold text-blue-400 block">Konteks Operasional</label>
+                                    <span class="text-xs text-gray-400">Jam kerja berjalan dalam satu shift (12 Jam)</span>
+                                </div>
+                                <span id="hourValue" class="text-lg font-bold text-blue-400">Jam ke-3</span>
+                            </div>
+                            <input type="range" id="hourSlider" min="1" max="12" value="3" class="w-full">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-brand-dark/50 p-4 rounded-xl text-xs text-gray-400">
+                        <span class="text-yellow-400 font-bold">💡 Skenario Uji Coba:</span> Coba geser slider <b>Konteks Shift ke Jam 10</b> dan <b>PERCLOS di atas 25%</b> untuk mensimulasikan insiden Budi Santoso.
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    
+                    <div id="hriCard" class="bg-[#1e2329] p-8 rounded-3xl border-2 border-green-500 shadow-[0_0_30px_rgba(0,230,118,0.15)] text-center transition-colors duration-500 relative overflow-hidden">
+                        <div id="hriGlow" class="absolute inset-0 bg-green-500/10 blur-3xl transition-colors duration-500"></div>
+                        <div class="relative z-10">
+                            <h4 class="text-gray-300 font-medium mb-2">Human Reliability Index</h4>
+                            <div id="hriScore" class="text-7xl md:text-8xl font-extrabold text-green-500 my-4 transition-colors duration-500">85</div>
+                            <div id="hriStatus" class="inline-block px-6 py-2 rounded-full text-lg font-bold bg-green-500/20 text-green-400 transition-colors duration-500">
+                                AMAN
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#1e2329] p-6 rounded-3xl border border-gray-700 shadow-xl flex-grow">
+                        <h4 class="text-sm font-semibold text-gray-400 mb-4">Phase-Aware Sensor Weights</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-300">HRV Weight</span>
+                                    <span id="weightHrv" class="font-bold">42%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-gray-800 rounded-full">
+                                    <div id="barHrv" class="h-full bg-blue-500 rounded-full transition-all duration-300" style="width: 42%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-300">GSR Weight</span>
+                                    <span id="weightGsr" class="font-bold">23%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-gray-800 rounded-full">
+                                    <div id="barGsr" class="h-full bg-teal-400 rounded-full transition-all duration-300" style="width: 23%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-300">PERCLOS Weight</span>
+                                    <span id="weightPerclos" class="font-bold">35%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-gray-800 rounded-full">
+                                    <div id="barPerclos" class="h-full bg-orange-400 rounded-full transition-all duration-300" style="width: 35%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="triggerAlert()" class="w-full bg-brand-dark hover:bg-gray-800 border border-gray-600 text-white font-bold py-4 rounded-2xl transition duration-300 flex items-center justify-center gap-2 group">
+                        <svg class="w-5 h-5 text-red-500 group-hover:animate-ping" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        Simulasikan Alert Supervisor
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
+            <p class="text-2xl md:text-3xl font-light text-gray-400 italic leading-relaxed">
+                "In real operations, this 5-minute early warning can prevent a <strong class="text-white">million-dollar incident</strong>."
+            </p>
+        </section>
+
+    </main>
+
+    <div id="alertModal" class="fixed inset-0 z-[100] modal-overlay hidden flex items-center justify-center bg-black/80 px-4">
+        <div class="bg-brand-card w-full max-w-lg rounded-3xl border border-red-500/50 shadow-[0_0_50px_rgba(239,68,68,0.4)] p-8 transform scale-95 transition-transform duration-300" id="modalContent">
+            <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-700">
+                <div class="w-14 h-14 bg-red-500/20 rounded-full flex items-center justify-center animate-pulse">
+                    <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-red-500 font-bold text-xl uppercase tracking-wider">Critical Fatigue Detected</h3>
+                    <p class="text-gray-400 text-sm">HSE Control Room Alert</p>
+                </div>
+            </div>
+            
+            <div class="space-y-4 mb-8">
+                <div class="flex justify-between items-center bg-brand-dark p-3 rounded-lg">
+                    <span class="text-gray-400">Personnel:</span>
+                    <span class="text-white font-bold">Budi Santoso (A-047)</span>
+                </div>
+                <div class="flex justify-between items-center bg-brand-dark p-3 rounded-lg">
+                    <span class="text-gray-400">Current HRI Score:</span>
+                    <span class="text-red-500 font-bold" id="modalHriText">49 (Bahaya)</span>
+                </div>
+                <div class="flex justify-between items-center bg-brand-dark p-3 rounded-lg">
+                    <span class="text-gray-400">Assigned Task:</span>
+                    <span class="text-yellow-400 font-bold text-right">Valve Pressure Test<br><span class="text-xs font-normal">(Starts in 30 mins)</span></span>
+                </div>
+            </div>
+
+            <div class="bg-red-500/10 border border-red-500/30 p-4 rounded-xl mb-8">
+                <span class="text-red-400 text-xs font-bold uppercase block mb-1">System Recommendation</span>
+                <p class="text-white text-sm">Immediate intervention required. Reassign critical task and mandate rest protocol.</p>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="closeAlert()" class="flex-1 bg-transparent hover:bg-gray-800 border border-gray-600 text-white font-semibold py-3 rounded-xl transition">
+                    Acknowledge
+                </button>
+                <button onclick="closeAlert()" class="flex-1 bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-red-600/30">
+                    Reassign Task
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mengambil elemen DOM
+        const hrvSlider = document.getElementById('hrvSlider');
+        const gsrSlider = document.getElementById('gsrSlider');
+        const perclosSlider = document.getElementById('perclosSlider');
+        const hourSlider = document.getElementById('hourSlider');
+
+        const hrvValue = document.getElementById('hrvValue');
+        const gsrValue = document.getElementById('gsrValue');
+        const perclosValue = document.getElementById('perclosValue');
+        const hourValue = document.getElementById('hourValue');
+
+        const hriScore = document.getElementById('hriScore');
+        const hriStatus = document.getElementById('hriStatus');
+        const hriCard = document.getElementById('hriCard');
+        const hriGlow = document.getElementById('hriGlow');
+
+        const barHrv = document.getElementById('barHrv');
+        const barGsr = document.getElementById('barGsr');
+        const barPerclos = document.getElementById('barPerclos');
+        
+        const weightHrv = document.getElementById('weightHrv');
+        const weightGsr = document.getElementById('weightGsr');
+        const weightPerclos = document.getElementById('weightPerclos');
+
+        // Fungsi Kalkulasi Utama
+        function calculateHRI() {
+            // Ambil nilai dari slider
+            let hrv = parseInt(hrvSlider.value);
+            let gsr = parseInt(gsrSlider.value);
+            let perclos = parseInt(perclosSlider.value);
+            let hour = parseInt(hourSlider.value);
+
+            // Update teks nilai slider
+            hrvValue.innerText = hrv + "%";
+            gsrValue.innerText = gsr + "%";
+            perclosValue.innerText = perclos + "%";
+            hourValue.innerText = "Jam ke-" + hour;
+
+            // 1. Kalkulasi HRI Dummy (Formula Logis Sederhana)
+            // Base score 100. Semakin tinggi error, semakin turun.
+            // Faktor jam kerja mempercepat penurunan.
+            let penalty = (hrv * 0.4) + (gsr * 0.3) + (perclos * 0.8) + (hour * 1.5);
+            
+            // Jika PERCLOS sangat tinggi dan jam sudah larut, penalti eksponensial (Micro-sleep bahaya)
+            if (perclos > 20 && hour > 8) {
+                penalty += 15;
+            }
+
+            let calculatedHRI = Math.max(0, Math.round(100 - penalty));
+            
+            // Update Teks HRI
+            hriScore.innerText = calculatedHRI;
+            
+            // Logika Status & Warna UI
+            if (calculatedHRI >= 80) {
+                // AMAN (HIJAU)
+                hriStatus.innerText = "AMAN";
+                hriStatus.className = "inline-block px-6 py-2 rounded-full text-lg font-bold bg-green-500/20 text-green-400 transition-colors duration-500";
+                hriScore.className = "text-7xl md:text-8xl font-extrabold text-green-500 my-4 transition-colors duration-500";
+                hriCard.className = "bg-[#1e2329] p-8 rounded-3xl border-2 border-green-500/50 shadow-[0_0_30px_rgba(0,230,118,0.15)] text-center transition-colors duration-500 relative overflow-hidden";
+                hriGlow.className = "absolute inset-0 bg-green-500/10 blur-3xl transition-colors duration-500";
+            } 
+            else if (calculatedHRI >= 60 && calculatedHRI < 80) {
+                // PANTAU (KUNING)
+                hriStatus.innerText = "WASPADA / PANTAU";
+                hriStatus.className = "inline-block px-6 py-2 rounded-full text-lg font-bold bg-yellow-500/20 text-yellow-400 transition-colors duration-500";
+                hriScore.className = "text-7xl md:text-8xl font-extrabold text-yellow-400 my-4 transition-colors duration-500";
+                hriCard.className = "bg-[#1e2329] p-8 rounded-3xl border-2 border-yellow-500/50 shadow-[0_0_30px_rgba(250,204,21,0.15)] text-center transition-colors duration-500 relative overflow-hidden";
+                hriGlow.className = "absolute inset-0 bg-yellow-500/10 blur-3xl transition-colors duration-500";
+            } 
+            else {
+                // BAHAYA (MERAH)
+                hriStatus.innerText = "BAHAYA KRITIS";
+                hriStatus.className = "inline-block px-6 py-2 rounded-full text-lg font-bold bg-red-500/20 text-red-500 transition-colors duration-500 animate-pulse";
+                hriScore.className = "text-7xl md:text-8xl font-extrabold text-red-500 my-4 transition-colors duration-500";
+                hriCard.className = "bg-[#1e2329] p-8 rounded-3xl border-2 border-red-500 shadow-[0_0_40px_rgba(239,68,68,0.3)] text-center transition-colors duration-500 relative overflow-hidden";
+                hriGlow.className = "absolute inset-0 bg-red-500/20 blur-3xl transition-colors duration-500";
+            }
+
+            // 2. Kalkulasi Dinamis Phase-Aware Weighting
+            // Seiring bertambahnya jam shift, bobot PERCLOS (kamera) akan meningkat secara otomatis
+            let baseHrvWeight = 45;
+            let baseGsrWeight = 25;
+            let basePerclosWeight = 30;
+
+            // Logika simulasi perubahan bobot
+            let shiftFactor = (hour - 1) * 2; // Menambah beban perclos seiring waktu
+            let finalPerclosWeight = Math.min(60, basePerclosWeight + shiftFactor);
+            let diff = finalPerclosWeight - basePerclosWeight;
+            
+            let finalHrvWeight = Math.max(10, baseHrvWeight - (diff * 0.7));
+            let finalGsrWeight = 100 - finalPerclosWeight - finalHrvWeight; // Sisa persentase
+
+            // Update UI Bobot
+            weightHrv.innerText = Math.round(finalHrvWeight) + "%";
+            barHrv.style.width = finalHrvWeight + "%";
+
+            weightGsr.innerText = Math.round(finalGsrWeight) + "%";
+            barGsr.style.width = finalGsrWeight + "%";
+
+            weightPerclos.innerText = Math.round(finalPerclosWeight) + "%";
+            barPerclos.style.width = finalPerclosWeight + "%";
+        }
+
+        // Fungsi Menampilkan Modal Alert
+        function triggerAlert() {
+            const modal = document.getElementById('alertModal');
+            const content = document.getElementById('modalContent');
+            const currentHri = hriScore.innerText;
+            
+            // Update teks HRI di dalam modal
+            document.getElementById('modalHriText').innerText = currentHri + (currentHri < 60 ? " (Kritis)" : " (Simulasi Alert)");
+
+            modal.classList.remove('hidden');
+            // Sedikit delay agar transisi scale berjalan
+            setTimeout(() => {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        // Fungsi Menutup Modal
+        function closeAlert() {
+            const modal = document.getElementById('alertModal');
+            const content = document.getElementById('modalContent');
+            
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Event Listener untuk semua slider
+        hrvSlider.addEventListener('input', calculateHRI);
+        gsrSlider.addEventListener('input', calculateHRI);
+        perclosSlider.addEventListener('input', calculateHRI);
+        hourSlider.addEventListener('input', calculateHRI);
+
+        // Panggil sekali saat halaman dimuat
+        calculateHRI();
+
+    </script>
+</body>
+</html>
