@@ -30,8 +30,18 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fadeInUp { opacity: 0; animation: fadeInUp 1s ease-out forwards; }
+        
+        /* Animasi Masuk dari Kiri (Swipe/Slide In) */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-slideInLeft { opacity: 0; animation: slideInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        
+        /* Utilitas Delay */
         .delay-200 { animation-delay: 200ms; }
         .delay-400 { animation-delay: 400ms; }
+        .delay-600 { animation-delay: 600ms; }
 
         /* Animasi Garis Arsitektur */
         @keyframes pulseLine {
@@ -77,84 +87,86 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24 animate-fadeInUp">
             <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">The Engine Behind The System</span>
             <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Arsitektur <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Teknologi HUMANGUARD</span></h1>
-            <p class="text-xl text-gray-400 max-w-3xl mx-auto">Pendekatan multimodal yang menggabungkan IoT wearable, edge computing, dan sensor fusion AI untuk menghasilkan prediksi keselamatan dengan akurasi presisi.</p>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">Pendekatan multimodal yang menggabungkan IoT wearable, edge computing, dan sensor fusion AI untuk menghasilkan prediksi keselamatan dengan presisi tinggi.</p>
         </div>
 
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 animate-fadeInUp delay-200">
             <h2 class="text-3xl font-bold mb-12 text-center text-white">4-Tier Architecture</h2>
             
             <div class="relative">
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-800 -translate-y-1/2 z-0"></div>
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-brand-accent -translate-y-1/2 z-0 animate-pulseLine"></div>
+                <div class="hidden md:block absolute top-[40%] left-0 w-full h-1 bg-gray-800 -translate-y-1/2 z-0"></div>
+                <div class="hidden md:block absolute top-[40%] left-0 w-full h-1 bg-brand-accent/50 -translate-y-1/2 z-0 animate-pulseLine"></div>
 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-                    <div class="bg-brand-card p-6 rounded-2xl border border-gray-700 shadow-xl text-center transform transition-transform hover:-translate-y-2">
-                        <div class="w-16 h-16 mx-auto bg-brand-dark border-2 border-brand-accent rounded-full flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(0,230,118,0.3)]">
-                            <span class="text-2xl font-bold text-brand-accent">01</span>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 relative z-10">
+                    
+                    <div class="group bg-brand-card p-6 rounded-2xl border border-gray-700 shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:border-brand-accent hover:shadow-[0_0_25px_rgba(0,230,118,0.2)] flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-brand-dark border-2 border-gray-600 group-hover:border-brand-accent rounded-full flex items-center justify-center mb-5 transition-colors duration-300">
+                            <span class="text-2xl font-bold text-gray-500 group-hover:text-brand-accent transition-colors">01</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Acquisition</h3>
-                        <p class="text-gray-400 text-sm">Wearable & Edge Vision</p>
+                        <h3 class="text-xl font-bold text-white mb-3">Data Acquisition</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Penggunaan wearable (PPG MAX30102, GSR, MPU-6050) dan Edge Vision kamera helm (PERCLOS) berfrekuensi 1Hz dan 30fps.</p>
                     </div>
 
-                    <div class="bg-brand-card p-6 rounded-2xl border border-gray-700 shadow-xl text-center transform transition-transform hover:-translate-y-2">
-                        <div class="w-16 h-16 mx-auto bg-brand-dark border-2 border-brand-accent rounded-full flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(0,230,118,0.3)]">
-                            <span class="text-2xl font-bold text-brand-accent">02</span>
+                    <div class="group bg-brand-card p-6 rounded-2xl border border-gray-700 shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:border-brand-accent hover:shadow-[0_0_25px_rgba(0,230,118,0.2)] flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-brand-dark border-2 border-gray-600 group-hover:border-brand-accent rounded-full flex items-center justify-center mb-5 transition-colors duration-300">
+                            <span class="text-2xl font-bold text-gray-500 group-hover:text-brand-accent transition-colors">02</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Edge Processing</h3>
-                        <p class="text-gray-400 text-sm">Data Filtering & Encryption</p>
+                        <h3 class="text-xl font-bold text-white mb-3">Edge Processing</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Ekstraksi fitur secara lokal di perangkat menggunakan HeartPy dan MediaPipe FaceMesh tanpa mengirimkan data video asli (Privacy-First).</p>
                     </div>
 
-                    <div class="bg-brand-card p-6 rounded-2xl border border-brand-accent shadow-[0_0_20px_rgba(0,230,118,0.15)] text-center transform transition-transform hover:-translate-y-2 scale-105">
-                        <div class="w-16 h-16 mx-auto bg-brand-accent border-2 border-white rounded-full flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(0,230,118,0.6)]">
-                            <span class="text-2xl font-bold text-slate-900">03</span>
+                    <div class="group bg-brand-card p-6 rounded-2xl border border-gray-700 shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:border-brand-accent hover:shadow-[0_0_25px_rgba(0,230,118,0.2)] flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-brand-dark border-2 border-gray-600 group-hover:border-brand-accent rounded-full flex items-center justify-center mb-5 transition-colors duration-300">
+                            <span class="text-2xl font-bold text-gray-500 group-hover:text-brand-accent transition-colors">03</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">AI Engine</h3>
-                        <p class="text-gray-300 text-sm font-semibold">Sensor Fusion & Forecasting</p>
+                        <h3 class="text-xl font-bold text-white mb-3">AI Engine Fusion</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Algoritma <i>Phase-Aware Contextual Weighting</i> dan arsitektur <i>Temporal Transformer</i> untuk menyesuaikan analisis kondisi pekerja secara dinamis.</p>
                     </div>
 
-                    <div class="bg-brand-card p-6 rounded-2xl border border-gray-700 shadow-xl text-center transform transition-transform hover:-translate-y-2">
-                        <div class="w-16 h-16 mx-auto bg-brand-dark border-2 border-brand-accent rounded-full flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(0,230,118,0.3)]">
-                            <span class="text-2xl font-bold text-brand-accent">04</span>
+                    <div class="group bg-brand-card p-6 rounded-2xl border border-gray-700 shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:border-brand-accent hover:shadow-[0_0_25px_rgba(0,230,118,0.2)] flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-brand-dark border-2 border-gray-600 group-hover:border-brand-accent rounded-full flex items-center justify-center mb-5 transition-colors duration-300">
+                            <span class="text-2xl font-bold text-gray-500 group-hover:text-brand-accent transition-colors">04</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Presentation</h3>
-                        <p class="text-gray-400 text-sm">Dashboard & Alert System</p>
+                        <h3 class="text-xl font-bold text-white mb-3">Presentation</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Sistem memberikan skor HRI (0-100) ke dasbor supervisor beserta proyeksi kondisi 30 menit ke depan untuk intervensi dini.</p>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 border-t border-gray-800/50 pt-24 animate-fadeInUp delay-400">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 border-t border-gray-800/50 pt-24 overflow-hidden">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white text-center">Data Acquisition Layer</h2>
             <p class="text-center text-gray-400 max-w-2xl mx-auto mb-16">HUMANGUARD menangkap data secara non-intrusif dari tiga dimensi utama untuk memastikan integritas data tanpa mengganggu kenyamanan pekerja.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-b from-brand-card to-brand-dark p-8 rounded-3xl border border-gray-800">
+                <div class="bg-gradient-to-b from-brand-card to-brand-dark p-8 rounded-3xl border border-gray-800 animate-slideInLeft delay-200">
                     <svg class="w-12 h-12 text-brand-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 class="text-xl font-bold text-white mb-3">Physiological (Wearable IoT)</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Menggunakan sensor Photoplethysmography (PPG) untuk mengukur <i>Heart Rate Variability</i> (HRV) dan sensor <i>Galvanic Skin Response</i> (GSR) untuk mendeteksi tingkat stres syaraf simpatik secara kontinyu.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Physiological (Wearable)</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Menggunakan sensor Photoplethysmography (PPG) untuk mengukur <i>Heart Rate Variability</i> (HRV) dan sensor <i>Galvanic Skin Response</i> (GSR) untuk mendeteksi tingkat stres secara kontinyu.</p>
                 </div>
 
-                <div class="bg-gradient-to-b from-brand-card to-brand-dark p-8 rounded-3xl border border-gray-800">
+                <div class="bg-gradient-to-b from-brand-card to-brand-dark p-8 rounded-3xl border border-gray-800 animate-slideInLeft delay-400">
                     <svg class="w-12 h-12 text-brand-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                     <h3 class="text-xl font-bold text-white mb-3">Behavioral (Edge Vision)</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Kamera pada fasilitas memproses analisis PERCLOS <i>(Percentage of Eye Closure)</i> dan postur kepala secara lokal di <i>Edge Node</i> untuk mendeteksi <i>microsleep</i> dan kelelahan visual tanpa mengirim data video asli (Privacy-First).</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Kamera menganalisis PERCLOS <i>(Percentage of Eye Closure)</i> secara lokal di <i>Edge Node</i> untuk mendeteksi <i>microsleep</i> dan kelelahan visual tanpa mengirim data video.</p>
                 </div>
 
-                <div class="bg-gradient-to-b from-brand-card to-brand-dark p-8 rounded-3xl border border-gray-800">
+                <div class="bg-gradient-to-b from-brand-card to-brand-dark p-8 rounded-3xl border border-gray-800 animate-slideInLeft delay-600">
                     <svg class="w-12 h-12 text-brand-accent mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     <h3 class="text-xl font-bold text-white mb-3">Contextual (Operations)</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Mengkorelasikan data fisik dengan jadwal shift, durasi tugas, dan tingkat risiko tugas (Critical/Non-Critical) yang diekstrak dari sistem manajemen HSE perusahaan (API Integration).</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Mengkorelasikan data fisik dengan jadwal shift, durasi tugas, dan tingkat risiko tugas (Critical/Non-Critical) yang diekstrak dari sistem manajemen HSE perusahaan.</p>
                 </div>
             </div>
         </section>
 
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 bg-brand-card rounded-[3rem] p-8 md:p-16 border border-gray-800 shadow-2xl overflow-hidden relative">
+        <section class="max-w-5xl mx-4 sm:mx-8 lg:mx-auto mb-32 bg-brand-card rounded-[3rem] p-8 md:p-12 border border-gray-800 shadow-2xl overflow-hidden relative">
             <div class="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10 items-center">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Sensor Fusion AI Engine</h2>
-                    <p class="text-gray-400 mb-6 text-lg">Keunggulan utama HUMANGUARD bukan pada pembacaan sensor secara terpisah, melainkan pada bagaimana algoritma kami menggabungkan sinyal tersebut.</p>
+                    <h2 class="text-3xl font-bold mb-6 text-white">Sensor Fusion AI Engine</h2>
+                    <p class="text-gray-400 mb-6 text-base">Keunggulan utama HUMANGUARD bukan pada pembacaan sensor secara terpisah, melainkan pada bagaimana algoritma mengintegrasikan sinyal tersebut.</p>
                     
                     <ul class="space-y-6">
                         <li class="flex items-start">
@@ -162,8 +174,8 @@
                                 <div class="w-3 h-3 bg-brand-accent rounded-full"></div>
                             </div>
                             <div>
-                                <h4 class="text-white font-bold text-lg mb-1">Multimodal Fusion Model</h4>
-                                <p class="text-gray-400 text-sm">Menghilangkan sinyal <i>false-positive</i>. Misalnya, detak jantung yang tinggi akan diklasifikasikan sebagai stres bahaya jika kamera menunjukkan mata tertutup (PERCLOS), namun diklasifikasikan aman jika kamera mendeteksi pekerja sedang berjalan cepat.</p>
+                                <h4 class="text-white font-bold text-base mb-1">Multimodal Fusion Model</h4>
+                                <p class="text-gray-400 text-sm">Menghilangkan sinyal <i>false-positive</i>. Detak jantung tinggi akan dinilai sebagai stres bahaya jika kamera mendeteksi mata tertutup, namun dinilai aman jika pekerja berjalan cepat.</p>
                             </div>
                         </li>
                         <li class="flex items-start">
@@ -171,20 +183,20 @@
                                 <div class="w-3 h-3 bg-brand-accent rounded-full"></div>
                             </div>
                             <div>
-                                <h4 class="text-white font-bold text-lg mb-1">Time-Series Forecasting (LSTM/Transformer)</h4>
-                                <p class="text-gray-400 text-sm">Bukan hanya melaporkan kondisi saat ini, AI kami memprediksi lintasan penurunan kognitif untuk 30-60 menit ke depan, memungkinkan peringatan pra-insiden yang proaktif.</p>
+                                <h4 class="text-white font-bold text-base mb-1">Time-Series Forecasting</h4>
+                                <p class="text-gray-400 text-sm">Bukan sekadar melapor, AI kami memprediksi lintasan penurunan kognitif untuk 30 menit ke depan, memungkinkan sistem peringatan pra-insiden yang proaktif.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="bg-brand-dark p-6 md:p-8 rounded-3xl border border-gray-700 shadow-inner">
+                <div class="bg-brand-dark p-6 rounded-3xl border border-gray-700 shadow-inner">
                     <div class="flex justify-between items-center mb-6 border-b border-gray-800 pb-4">
-                        <span class="text-gray-400 font-semibold uppercase tracking-wider text-xs">AI Output Calculation</span>
-                        <span class="bg-red-500/20 text-red-400 text-xs font-bold px-3 py-1 rounded-full animate-pulse">CRITICAL PREDICTION</span>
+                        <span class="text-gray-400 font-semibold uppercase tracking-wider text-[10px] md:text-xs">AI Output Calculation</span>
+                        <span class="bg-red-500/20 text-red-400 text-[10px] md:text-xs font-bold px-3 py-1 rounded-full animate-pulse">CRITICAL PREDICTION</span>
                     </div>
                     
-                    <div class="space-y-4 font-mono text-sm">
+                    <div class="space-y-4 font-mono text-xs md:text-sm">
                         <div class="flex justify-between items-center">
                             <span class="text-gray-500">Input_1: HRV_Metric</span>
                             <span class="text-green-400">Normal (65ms)</span>
@@ -200,8 +212,8 @@
                         
                         <div class="w-full h-px bg-gray-800 my-4"></div>
                         
-                        <div class="flex justify-between items-center text-lg">
-                            <span class="text-white font-bold">Predicted HRI (T+30m)</span>
+                        <div class="flex justify-between items-center text-base md:text-lg">
+                            <span class="text-white font-bold">Predicted HRI (T+30)</span>
                             <span class="text-red-500 font-bold bg-red-500/10 px-3 py-1 rounded">49.82 - DANGER</span>
                         </div>
                     </div>
@@ -215,9 +227,8 @@
             <div class="flex flex-wrap justify-center gap-4 md:gap-6">
                 <div class="px-6 py-3 bg-brand-card border border-gray-700 rounded-full text-gray-300 font-medium hover:border-brand-accent transition-colors duration-300 shadow-md">TensorFlow & PyTorch</div>
                 <div class="px-6 py-3 bg-brand-card border border-gray-700 rounded-full text-gray-300 font-medium hover:border-brand-accent transition-colors duration-300 shadow-md">React.js & Tailwind</div>
-                <div class="px-6 py-3 bg-brand-card border border-gray-700 rounded-full text-gray-300 font-medium hover:border-brand-accent transition-colors duration-300 shadow-md">Node.js / Python FastAPI</div>
+                <div class="px-6 py-3 bg-brand-card border border-gray-700 rounded-full text-gray-300 font-medium hover:border-brand-accent transition-colors duration-300 shadow-md">Python FastAPI</div>
                 <div class="px-6 py-3 bg-brand-card border border-gray-700 rounded-full text-gray-300 font-medium hover:border-brand-accent transition-colors duration-300 shadow-md">AWS IoT Core</div>
-                <div class="px-6 py-3 bg-brand-card border border-gray-700 rounded-full text-gray-300 font-medium hover:border-brand-accent transition-colors duration-300 shadow-md">Apache Kafka</div>
                 <div class="px-6 py-3 bg-brand-card border border-gray-700 rounded-full text-gray-300 font-medium hover:border-brand-accent transition-colors duration-300 shadow-md">PostgreSQL & InfluxDB</div>
             </div>
         </section>
@@ -227,20 +238,6 @@
                 "We don't just detect fatigue — <br class="hidden md:block">
                 we <span class="text-brand-accent font-black">quantify</span> human reliability."
             </h2>
-        </section>
-
-        <section class="py-16 mt-20 border-t border-gray-800/50">
-            <div class="max-w-4xl mx-auto px-4 text-center">
-                <h3 class="text-gray-400 text-lg font-medium mb-10 tracking-wide">Asal Universitas</h3>
-                <div class="flex justify-center items-center gap-12 md:gap-24">
-                    <a href="http://petra.ac.id/" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform duration-300">
-                        <img src="logo-ukp.png" alt="Universitas Kristen Petra" class="h-14 md:h-20 w-auto object-contain">
-                    </a>
-                    <a href="http://petra.ac.id/" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform duration-300">
-                        <img src="logo-pcu.png" alt="Petra Christian University" class="h-14 md:h-20 w-auto object-contain">
-                    </a>
-                </div>
-            </div>
         </section>
 
     </main>
