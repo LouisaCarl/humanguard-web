@@ -21,7 +21,42 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; } </style>
+    
+    <style> 
+        body { font-family: 'Inter', sans-serif; }
+
+        /* 1. Menyembunyikan Scrollbar untuk Carousel (Slider) */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* 2. Interaksi Hover Timeline (Use Case Budi) */
+        /* Jika area timeline di-hover, buramkan semua item yang TIDAK sedang di-hover */
+        .timeline-wrapper:hover .timeline-step:not(:hover) {
+            filter: blur(4px);
+            opacity: 0.3;
+        }
+        
+        /* Animasi transisi halus untuk setiap langkah */
+        .timeline-step {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center left;
+        }
+        
+        /* Efek Zoom/Membesar pada item yang sedang disorot */
+        .timeline-step:hover {
+            transform: scale(1.05); /* Skala membesar 5% */
+            z-index: 10;
+        }
+
+        /* Animasi titik berkedip kencang (Fast Blink) */
+        @keyframes fastBlink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.3); }
+        }
+        .timeline-step:hover .timeline-dot {
+            animation: fastBlink 0.4s ease-in-out infinite;
+        }
+    </style>
 </head>
 <body class="bg-brand-dark text-white antialiased flex flex-col min-h-screen">
 
@@ -53,16 +88,22 @@
         </div>
     </nav>
 
-    <main class="flex-grow pt-32 pb-20">
+    <main class="flex-grow pt-32 pb-20 overflow-hidden">
         
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Mengungkap <span class="text-brand-accent">Titik Buta</span> Keselamatan Kerja</h1>
             <p class="text-xl text-gray-400 max-w-3xl mx-auto">Sistem keselamatan modern sangat canggih dalam mendeteksi bahaya lingkungan, namun gagal mengukur satu variabel paling kritis: Kondisi Internal Manusia.</p>
         </div>
 
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-brand-card p-8 rounded-2xl border border-gray-800 hover:border-gray-600 transition">
+        <section class="max-w-7xl mx-auto pl-4 sm:pl-6 lg:px-8 mb-32">
+            <div class="text-gray-500 text-sm mb-4 flex items-center gap-2 lg:hidden">
+                <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                Geser untuk melihat detail
+            </div>
+
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 pr-8 lg:pr-0 no-scrollbar" style="scroll-behavior: smooth;">
+                
+                <div class="snap-center shrink-0 w-[85%] md:w-[45%] lg:w-[calc(33.333%-1rem)] bg-brand-card p-8 rounded-2xl border border-gray-800 transition-colors duration-300 hover:border-brand-accent/50 cursor-grab active:cursor-grabbing">
                     <div class="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                     </div>
@@ -70,7 +111,7 @@
                     <p class="text-gray-400 leading-relaxed">Pekerja yang sangat lelah sering kali tidak menyadari bahwa kapasitas kognitifnya telah berkurang secara signifikan, sehingga mereka jarang melaporkan kondisinya secara sukarela.</p>
                 </div>
 
-                <div class="bg-brand-card p-8 rounded-2xl border border-gray-800 hover:border-gray-600 transition">
+                <div class="snap-center shrink-0 w-[85%] md:w-[45%] lg:w-[calc(33.333%-1rem)] bg-brand-card p-8 rounded-2xl border border-gray-800 transition-colors duration-300 hover:border-brand-accent/50 cursor-grab active:cursor-grabbing">
                     <div class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
@@ -78,7 +119,7 @@
                     <p class="text-gray-400 leading-relaxed">Riset Dawson & Reid membuktikan: setelah 17 jam terjaga, kemampuan pengambilan keputusan pekerja setara dengan seseorang yang memiliki kadar alkohol darah 0,05%.</p>
                 </div>
 
-                <div class="bg-brand-card p-8 rounded-2xl border border-gray-800 hover:border-gray-600 transition">
+                <div class="snap-center shrink-0 w-[85%] md:w-[45%] lg:w-[calc(33.333%-1rem)] bg-brand-card p-8 rounded-2xl border border-gray-800 transition-colors duration-300 hover:border-brand-accent/50 cursor-grab active:cursor-grabbing">
                     <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
                         <svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                     </div>
@@ -90,35 +131,38 @@
 
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-brand-card rounded-3xl p-8 md:p-12 border border-brand-accent/30 shadow-[0_0_50px_rgba(0,230,118,0.1)]">
-                <div class="text-center mb-12">
+                <div class="text-center mb-16">
                     <span class="text-brand-accent font-bold tracking-widest uppercase text-sm">The Solution & Use Case</span>
                     <h2 class="text-3xl md:text-4xl font-bold mt-2">Mencegah Insiden Sebelum Terjadi</h2>
+                    <p class="text-gray-400 mt-3">(Arahkan kursor ke setiap tahapan untuk melihat detail)</p>
                 </div>
 
-                <div class="relative border-l-2 border-gray-700 ml-4 md:ml-10 space-y-12">
-                    <div class="relative pl-8 md:pl-12">
-                        <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-gray-600 border-4 border-brand-card"></div>
-                        <h4 class="text-xl font-bold text-white mb-2">Konteks Operasional (Jam ke-10 Shift Malam)</h4>
+                <div class="relative border-l-2 border-gray-700 ml-4 md:ml-10 space-y-12 timeline-wrapper py-6 pr-4">
+                    
+                    <div class="relative pl-8 md:pl-12 timeline-step cursor-default">
+                        <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-gray-500 border-4 border-brand-card shadow-[0_0_10px_rgba(107,114,128,0.8)]"></div>
+                        <h4 class="text-xl md:text-2xl font-bold text-white mb-2">Konteks Operasional (Jam ke-10 Shift Malam)</h4>
                         <p class="text-gray-400 text-lg">Teknisi Budi Santoso ditugaskan melakukan tugas kritis <strong class="text-white">Valve Pressure Test</strong> di area fasilitas. Secara fisik Budi merasa mampu bekerja (Fatigue Blindness).</p>
                     </div>
 
-                    <div class="relative pl-8 md:pl-12">
-                        <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-brand-card shadow-[0_0_10px_rgba(239,68,68,0.8)] animate-pulse"></div>
-                        <h4 class="text-xl font-bold text-red-400 mb-2">Deteksi Real-Time (HRI Drop ke 49)</h4>
+                    <div class="relative pl-8 md:pl-12 timeline-step cursor-default">
+                        <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-brand-card shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
+                        <h4 class="text-xl md:text-2xl font-bold text-red-400 mb-2">Deteksi Real-Time (HRI Drop ke 49)</h4>
                         <p class="text-gray-400 text-lg">Tanpa disadari Budi, HRV-nya menurun drastis dan sensor kamera mendeteksi pola micro-sleep (PERCLOS). Algoritma AI mengkalkulasi <strong class="text-red-400">Human Reliability Index (HRI) turun menjadi 49 (Zona Bahaya Kritis)</strong>.</p>
                     </div>
 
-                    <div class="relative pl-8 md:pl-12">
-                        <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-yellow-400 border-4 border-brand-card"></div>
-                        <h4 class="text-xl font-bold text-yellow-400 mb-2">Peringatan Dini 30 Menit</h4>
+                    <div class="relative pl-8 md:pl-12 timeline-step cursor-default">
+                        <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-yellow-400 border-4 border-brand-card shadow-[0_0_10px_rgba(250,204,21,0.8)]"></div>
+                        <h4 class="text-xl md:text-2xl font-bold text-yellow-400 mb-2">Peringatan Dini 30 Menit</h4>
                         <p class="text-gray-400 text-lg">HUMANGUARD tidak menunggu insiden terjadi. Sistem langsung mengirimkan <strong class="text-yellow-400">alert ke dashboard Supervisor secara otomatis, 30 menit sebelum</strong> Budi memulai tugas kritis tersebut.</p>
                     </div>
 
-                    <div class="relative pl-8 md:pl-12">
-                        <div class="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-brand-accent border-4 border-brand-card"></div>
-                        <h4 class="text-xl font-bold text-brand-accent mb-2">Intervensi & Penyelamatan</h4>
+                    <div class="relative pl-8 md:pl-12 timeline-step cursor-default">
+                        <div class="timeline-dot absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-brand-accent border-4 border-brand-card shadow-[0_0_10px_rgba(0,230,118,0.8)]"></div>
+                        <h4 class="text-xl md:text-2xl font-bold text-brand-accent mb-2">Intervensi & Penyelamatan</h4>
                         <p class="text-gray-400 text-lg">Supervisor mengambil tindakan proaktif dengan merotasi Budi ke tugas ringan, dan tugas kritis diambil alih oleh rekan yang 100% fit. <strong class="text-white">Potensi insiden fatal berhasil dicegah tanpa mengganggu jadwal operasional.</strong></p>
                     </div>
+
                 </div>
             </div>
         </section>
