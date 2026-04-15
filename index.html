@@ -30,9 +30,7 @@
             50% { transform: translateY(-15px); } 
             100% { transform: translateY(0); }
         }
-        .animate-floatMobile {
-            animation: floatMobile 5s ease-in-out infinite;
-        }
+        .animate-floatMobile { animation: floatMobile 5s ease-in-out infinite; }
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(25px); }
@@ -49,30 +47,28 @@
             0%, 100% { opacity: 0.15; transform: scale(1); }
             50% { opacity: 0.3; transform: scale(1.1); }
         }
-        .animate-glowPulse {
-            animation: glowPulse 8s ease-in-out infinite;
-        }
+        .animate-glowPulse { animation: glowPulse 8s ease-in-out infinite; }
     </style>
 </head>
-<body class="bg-brand-dark text-white antialiased">
+<body class="bg-brand-dark text-white antialiased flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-24">
                 
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
-                    <a href="#">
+                    <a href="index.html">
                         <img src="logo-baru.png" alt="HUMANGUARD Logo" class="h-12 md:h-16 lg:h-20 w-auto object-contain">
                     </a>
                 </div>
                 
                 <div class="hidden md:flex flex-1 justify-center">
                     <div class="flex items-baseline space-x-5">
-                        <a href="#problem-solution" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Problem & Solution</a>
-                        <a href="#technology" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Technology</a>
-                        <a href="#how-it-works" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">How it Works</a>
-                        <a href="#value-creation" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Value Creation</a>
-                        <a href="#team" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Team</a>
+                        <a href="problem-solution.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Problem & Solution</a>
+                        <a href="technology.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Technology</a>
+                        <a href="how-it-works.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">How it Works</a>
+                        <a href="value-creation.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Value Creation</a>
+                        <a href="team.html" class="hover:text-brand-accent transition px-3 py-2 text-sm font-medium whitespace-nowrap">Team</a>
                     </div>
                 </div>
                 
@@ -86,120 +82,91 @@
         </div>
     </nav>
 
-    <section id="demo" class="relative pt-32 pb-20 lg:pt-48 overflow-hidden bg-gradient-to-b from-slate-900 to-brand-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-            
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-card border border-gray-700 text-sm font-medium text-gray-300 mb-8 animate-fadeInUp">
-                <span class="flex w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                Digital Hackathon AI/ML Hulu Migas 2026
-            </div>
-            
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-fadeInUp delay-200">
-                AI-Powered Human Reliability <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Intelligence untuk Hulu Migas</span>
-            </h1>
-            
-            <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto mb-10 animate-fadeInUp delay-400">
-                Mengubah paradigma K3 dari reaktif menjadi prediktif. Mencegah insiden sebelum terjadi dengan memantau kondisi kognitif dan fisik pekerja secara real-time.
-            </p>
-            
-            <div class="flex justify-center gap-4 mb-24 animate-fadeInUp delay-400">
-                <a href="#process" class="bg-brand-accent hover:bg-green-400 text-slate-900 font-bold px-8 py-3 rounded-lg transition text-lg shadow-[0_0_20px_rgba(0,230,118,0.3)] hover:scale-105">
-                    Explore Dashboard
-                </a>
-            </div>
-
-            <div class="relative max-w-6xl mx-auto mt-16 mb-32 px-4 group">
+    <main class="flex-grow">
+        <section id="demo" class="relative pt-32 pb-20 lg:pt-48 overflow-hidden bg-gradient-to-b from-slate-900 to-brand-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
                 
-                <div class="absolute inset-0 bg-green-900/20 rounded-full blur-[120px] transform animate-glowPulse z-0"></div>
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-card border border-gray-700 text-sm font-medium text-gray-300 mb-8 animate-fadeInUp">
+                    <span class="flex w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                    Digital Hackathon AI/ML Hulu Migas 2026
+                </div>
                 
-                <div class="relative z-10 flex flex-col md:flex-row justify-center items-center md:items-end gap-10 lg:gap-16">
-                    
-                    <div class="relative w-full max-w-[750px] transition-transform duration-500 hover:scale-[1.02]">
-                        <img src="laptop.png" alt="HUMANGUARD Laptop Dashboard" class="w-full h-auto object-cover rounded-xl md:rounded-3xl shadow-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-fadeInUp delay-200">
+                    AI-Powered Human Reliability <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Intelligence untuk Hulu Migas</span>
+                </h1>
+                
+                <p class="mt-4 text-xl text-gray-400 max-w-3xl mx-auto mb-10 animate-fadeInUp delay-400">
+                    Mengubah paradigma K3 dari reaktif menjadi prediktif. Mencegah insiden sebelum terjadi dengan memantau kondisi kognitif dan fisik pekerja secara real-time.
+                </p>
+                
+                <div class="relative max-w-6xl mx-auto mt-16 mb-16 px-4 group">
+                    <div class="absolute inset-0 bg-green-900/20 rounded-full blur-[120px] transform animate-glowPulse z-0"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row justify-center items-center md:items-end gap-10 lg:gap-16">
+                        <div class="relative w-full max-w-[750px] transition-transform duration-500 hover:scale-[1.02]">
+                            <img src="laptop.png" alt="HUMANGUARD Laptop Dashboard" class="w-full h-auto object-cover rounded-xl md:rounded-3xl shadow-2xl">
+                        </div>
+                        <div class="relative w-[220px] lg:w-[250px] flex-shrink-0 transition-transform duration-300 hover:scale-105 animate-floatMobile">
+                            <img src="hp.png" alt="HUMANGUARD Mobile Dashboard" class="w-full h-auto object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-gray-800 bg-brand-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-center text-3xl md:text-5xl font-bold text-white mb-20 tracking-tight">
+                    Mengapa Hulu Migas Membutuhkan Ini?
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 text-center">
+                    <div class="group">
+                        <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
+                            <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-4">70-80% Insiden Fatal</h3>
+                        <p class="text-gray-400 leading-relaxed text-lg">
+                            Mayoritas kecelakaan operasi diakibatkan oleh faktor manusia (kelelahan & stres). Paradigma K3 reaktif saat ini tidak lagi cukup.
+                        </p>
                     </div>
 
-                    <div class="relative w-[220px] lg:w-[250px] flex-shrink-0 transition-transform duration-300 hover:scale-105 animate-floatMobile">
-                        <img src="hp.png" alt="HUMANGUARD Mobile Dashboard" class="w-full h-auto object-cover rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    <div class="group">
+                        <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
+                            <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-3xl font-bold text-brand-accent mb-4">Kerugian $3.000.000</h3>
+                        <p class="text-gray-400 leading-relaxed text-lg">
+                            Satu insiden fatal memakan biaya rata-rata $3 Juta USD yang meliputi kompensasi medis, hukum, biaya investigasi, hingga perbaikan kerusakan.
+                        </p>
                     </div>
 
+                    <div class="group">
+                        <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
+                            <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-4">Cegah Hilang Produksi</h3>
+                        <p class="text-gray-400 leading-relaxed text-lg">
+                            Menghindari <i>downtime</i> mendadak berpotensi menyelamatkan laju produksi hingga <b>15.000 BBLS</b> Minyak dan <b>70 MMSCF</b> Gas.
+                        </p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="block md:hidden max-w-xs mx-auto mt-10">
-                <img src="hp.png" alt="HUMANGUARD Dashboard" class="w-full h-auto object-cover rounded-[2.5rem] shadow-2xl">
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-brand-dark py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-3 mb-4 md:mb-0">
+                <img src="logo-baru.png" alt="Logo" class="h-8 grayscale opacity-70">
+                <span class="text-gray-500 font-semibold tracking-wide">HUMANGUARD &copy; 2026</span>
             </div>
-
-        </div>
-    </section>
-
-    <section id="problem-solution" class="py-24 border-y border-gray-800 bg-brand-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-center text-3xl md:text-5xl font-bold text-white mb-20 tracking-tight">
-                Mengapa Hulu Migas Membutuhkan Ini?
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 text-center">
-                
-                <div class="group">
-                    <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
-                        <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-3xl font-bold text-white mb-4">70-80% Insiden Fatal</h3>
-                    <p class="text-gray-400 leading-relaxed text-lg">
-                        Mayoritas kecelakaan operasi diakibatkan oleh faktor manusia (kelelahan & stres). Paradigma K3 reaktif saat ini tidak lagi cukup untuk operasional berisiko tinggi.
-                    </p>
-                </div>
-
-                <div class="group">
-                    <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
-                        <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-3xl font-bold text-brand-accent mb-4">Kerugian $3.000.000</h3>
-                    <p class="text-gray-400 leading-relaxed text-lg">
-                        Satu insiden fatal memakan biaya rata-rata $3 Juta USD yang meliputi kompensasi medis, hukum, biaya investigasi, hingga perbaikan kerusakan fasilitas.
-                    </p>
-                </div>
-
-                <div class="group">
-                    <div class="w-24 h-24 mx-auto mb-8 bg-brand-card rounded-full flex items-center justify-center border border-gray-700 shadow-xl group-hover:border-brand-accent group-hover:shadow-[0_0_30px_rgba(0,230,118,0.3)] transition-all duration-300 transform group-hover:-translate-y-2">
-                        <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-3xl font-bold text-white mb-4">Cegah Hilang Produksi</h3>
-                    <p class="text-gray-400 leading-relaxed text-lg">
-                        Menghindari <i>downtime</i> dan <i>shutdown</i> fasilitas secara mendadak yang berpotensi menyelamatkan laju produksi hingga <b>15.000 BBLS</b> Minyak dan <b>70 MMSCF</b> Gas.
-                    </p>
-                </div>
-
+            <div class="text-gray-500 text-sm">
+                Digital Hackathon AI/ML Hulu Migas
             </div>
         </div>
-    </section>
-
-    <section id="technology" class="py-32 bg-brand-dark min-h-screen text-center border-b border-gray-800">
-        <h2 class="text-4xl font-bold text-white mb-4">Technology</h2>
-        <p class="text-gray-400">Bagian ini akan diisi dengan detail teknologi AI/ML Anda.</p>
-    </section>
-
-    <section id="how-it-works" class="py-32 bg-brand-card min-h-screen text-center border-b border-gray-800">
-        <h2 class="text-4xl font-bold text-white mb-4">How It Works</h2>
-        <p class="text-gray-400">Bagian ini akan diisi dengan 4 Lapisan Arsitektur (Wearable, Edge, AI, Dashboard).</p>
-    </section>
-
-    <section id="value-creation" class="py-32 bg-brand-dark min-h-[50vh] text-center border-b border-gray-800">
-        <h2 class="text-4xl font-bold text-white mb-4">Value Creation</h2>
-        <p class="text-gray-400">Bagian ini akan diisi dengan potensi penghematan (BBLS/MMSCF) dan ROI.</p>
-    </section>
-    
-    <section id="team" class="py-32 bg-brand-card min-h-[50vh] text-center">
-        <h2 class="text-4xl font-bold text-white mb-4">Meet The Team</h2>
-        <p class="text-gray-400">Bagian ini akan diisi dengan profil tim Anda.</p>
-    </section>
+    </footer>
 
 </body>
 </html>
